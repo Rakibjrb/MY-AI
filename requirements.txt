@@ -1,0 +1,24 @@
+# --- Voice & Speech ---
+SpeechRecognition
+gTTS
+pvporcupine
+pvrecorder
+langdetect
+# playsound এর বদলে লিনাক্সে আমরা mpg123 ব্যবহার করব, 
+# তাই এটি এখানে না রাখাই ভালো। তবে উইন্ডোজের জন্য লাগলে পরে অ্যাড করা যাবে।
+
+# --- AI & Logic ---
+#openai
+python-dotenv
+
+# --- Hardware & IoT ---
+#requests
+
+# --- Vision (Camera) ---
+#opencv-python
+# face_recognition ইনস্টল করার সময় dlib লাগে যা একটু সময় নিতে পারে।
+#face_recognition
+
+# --- Dashboard & Web ---
+#flask
+#flask-socketio
