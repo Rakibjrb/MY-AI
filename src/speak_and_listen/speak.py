@@ -3,8 +3,8 @@ from gtts import gTTS
 import subprocess
 
 def speak(text, language="en"):
-    main_voice="Jarvis.mp3" # original gTTS voice
-    print(f"Jarvis: {text}") # print text
+    main_voice="maya.mp3" # original gTTS voice
+    print(f"Maya: {text}") # print text
 
     try:
         tts = gTTS(text=text, lang=language) # gTTS voice
