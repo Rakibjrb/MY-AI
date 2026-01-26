@@ -7,8 +7,10 @@ from handle.local_commands import commands
 def main_system():
     try:
         startup() # System startup
+        commands()
         while True:
-            commands()
+            if listen_wake_word():
+                commands()
             
     except Exception as e:
         speak(f"System Error: {e}") # System error

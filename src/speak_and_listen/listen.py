@@ -1,6 +1,7 @@
 import speech_recognition as sr
 from speak_and_listen.speak import speak
 import random
+import time
 
 listening_messages = [
     "I'm listening ...",
@@ -19,6 +20,7 @@ def take_command():
     r.pause_threshold = 1
 
     speak(random.choice(listening_messages))
+    time.sleep(0.5)
 
     with sr.Microphone(device_index=4, sample_rate=44100, chunk_size=1024) as source:
 
