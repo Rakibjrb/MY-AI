@@ -5,12 +5,13 @@ pvporcupine
 pvrecorder
 langdetect
 pyaudio
+python-dotenv
 # playsound এর বদলে লিনাক্সে আমরা mpg123 ব্যবহার করব, 
 # তাই এটি এখানে না রাখাই ভালো। তবে উইন্ডোজের জন্য লাগলে পরে অ্যাড করা যাবে।
 
 # --- AI & Logic ---
+google-genai # google gen ai for free api access key
 #openai
-python-dotenv
 
 # --- Hardware & IoT ---
 #requests

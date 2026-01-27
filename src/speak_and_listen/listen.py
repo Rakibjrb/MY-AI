@@ -8,7 +8,6 @@ listening_messages = [
     "What is it?",
     "Tell me",
     "Yes?",
-    "Go ahead",
     "I'm here ..."
 ]
 
