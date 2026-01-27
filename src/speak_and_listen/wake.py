@@ -1,10 +1,7 @@
 import os
 import pvporcupine
 from pvrecorder import PvRecorder
-from dotenv import load_dotenv
-
-load_dotenv()
-ACCESS_KEY = os.getenv("PICOVOICE_ACCESS_KEY")
+from config.dotenv import env
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(current_path, "voice_model", "Hey-Maya_en_linux_v4_0_0.ppn")
@@ -12,7 +9,7 @@ MODEL_PATH = os.path.join(current_path, "voice_model", "Hey-Maya_en_linux_v4_0_0
 def listen_wake_word():
     # wake word access key & model path
     porcupine = pvporcupine.create(
-        access_key=ACCESS_KEY,
+        access_key=env["PICOVOICE_ACCESS_KEY"],
         keyword_paths=[MODEL_PATH]
     )
 
