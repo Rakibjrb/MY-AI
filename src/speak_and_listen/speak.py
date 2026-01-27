@@ -1,26 +1,33 @@
 import os
-from gtts import gTTS
 import subprocess
-import time
+from gtts import gTTS
+from langdetect import detect
 
-def speak(text, language="en"):
-    main_voice="maya.mp3" # original gTTS voice
-    print(f"Maya: {text}") # print text
+supported_languages = ['bn', 'en', 'hi', 'es', 'fr', 'de', 'ja', 'ar']
+
+def speak(text):
+    main_voice = "maya.mp3"
 
     try:
-        time.sleep(0.5)
-        tts = gTTS(text=text, lang=language) # gTTS voice
-        tts.save(main_voice) # save gTTS voice
-        os.system(f"mpg123 -q {main_voice}") # play gTTS voice
-       
+        try:
+            detected_lang = detect(text) # detect language
+        except:
+            detected_lang = 'en' # default language is english
+        
+        final_lang = detected_lang if detected_lang in supported_languages else 'en'
+        print(f"Maya Speaking in {final_lang}...")
+        tts = gTTS(text=text, lang=final_lang, slow=False)
+        tts.save(main_voice)
+
+        subprocess.run(["mpg123", "-q", main_voice])
+
     except Exception as e:
         print(f"Error on Voice System: {e}")
-        errorVoice = gTTS(text=f"Error on Voice System {e}", lang="en")
-        errorVoice.save("error.mp3")
-        os.system("mpg123 -q error.mp3")
+        tts = gTTS(text=text, lang=final_lang, slow=False)
+        tts.save(main_voice)
 
+        subprocess.run(["mpg123", "-q", main_voice])
+    
     finally:
-        if os.path.exists(main_voice): # remove main voice
+        if os.path.exists(main_voice):
             os.remove(main_voice)
-        if os.path.exists("error.mp3"):
-            os.remove("error.mp3")
