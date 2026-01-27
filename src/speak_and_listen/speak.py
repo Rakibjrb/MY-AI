@@ -15,7 +15,7 @@ def speak(text):
             detected_lang = 'en' # default language is english
         
         final_lang = detected_lang if detected_lang in supported_languages else 'en'
-        print(f"Maya Speaking in {final_lang}...")
+        print(f"Maya Speaking ...")
         tts = gTTS(text=text, lang=final_lang, slow=False)
         tts.save(main_voice)
 
