@@ -5,7 +5,8 @@ from speak_and_listen.speak import speak
 
 def saytime():
     current_time = time.localtime() # get current time
-    speak(f"The time is {time.strftime('%I:%M %p', current_time)}") # speak time
+    formatted_time = time.strftime('%I:%M %p', current_time)
+    return formatted_time
 
 def wish_me():
     hour = int(datetime.datetime.now().hour) # get current hour

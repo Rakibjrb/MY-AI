@@ -1,12 +1,14 @@
 import os
 from gtts import gTTS
 import subprocess
+import time
 
 def speak(text, language="en"):
     main_voice="maya.mp3" # original gTTS voice
     print(f"Maya: {text}") # print text
 
     try:
+        time.sleep(0.5)
         tts = gTTS(text=text, lang=language) # gTTS voice
         tts.save(main_voice) # save gTTS voice
         os.system(f"mpg123 -q {main_voice}") # play gTTS voice
