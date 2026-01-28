@@ -3,10 +3,9 @@ import subprocess
 from gtts import gTTS
 from langdetect import detect
 
-supported_languages = ['bn', 'en', 'hi', 'es', 'fr', 'de', 'ja', 'ar']
-
 def speak(text):
     main_voice = "maya.mp3"
+    detected_lang = 'en'
 
     try:
         try:
@@ -14,16 +13,15 @@ def speak(text):
         except:
             detected_lang = 'en' # default language is english
         
-        final_lang = detected_lang if detected_lang in supported_languages else 'en'
         print(f"Maya Speaking ...")
-        tts = gTTS(text=text, lang=final_lang, slow=False)
+        tts = gTTS(text=text, lang=detected_lang, slow=False)
         tts.save(main_voice)
 
         subprocess.run(["mpg123", "-q", main_voice])
 
     except Exception as e:
         print(f"Error on Voice System: {e}")
-        tts = gTTS(text=text, lang=final_lang, slow=False)
+        tts = gTTS(text="Error on Voice System", lang="en", slow=False)
         tts.save(main_voice)
 
         subprocess.run(["mpg123", "-q", main_voice])

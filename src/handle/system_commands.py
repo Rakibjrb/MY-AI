@@ -3,7 +3,7 @@ def handle_system_command(command):
     
     for device in devices:
         if device in command:
-            if "on" in command:
+            if "switch on" in command:
                 return f"Switching ON the {device}. Completed!"
-            elif "off" in command:
+            elif "switch off" in command:
                 return f"Switching OFF the {device}. Completed!"

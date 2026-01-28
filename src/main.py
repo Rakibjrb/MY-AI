@@ -1,4 +1,5 @@
 import time
+import subprocess
 from speak_and_listen.speak import speak
 from local_functions.startup import startup
 from speak_and_listen.wake import listen_wake_word
@@ -12,6 +13,7 @@ def main_system():
                 commands()
             
     except Exception as e:
+        print(f"System Error: {e}")
         speak(f"System Error: {e}") # System error
 
 if __name__ == "__main__":

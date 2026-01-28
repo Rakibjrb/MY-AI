@@ -17,7 +17,7 @@ def listen_wake_word():
     
     try:
         recorder.start()
-        print(f"Say: 'Hey Maya'...")
+        print(f"Say: 'wake word'...")
 
         while True:
             pcm = recorder.read()
