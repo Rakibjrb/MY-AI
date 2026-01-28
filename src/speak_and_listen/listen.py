@@ -11,12 +11,10 @@ listening_messages = [
     "I'm here ..."
 ]
 
-def take_command(again_asked=False):
+def take_command(with_response=True):
     r = sr.Recognizer()
 
-    if(again_asked):
-        pass
-    else:
+    if(with_response):
         speak(random.choice(listening_messages))
         time.sleep(0.5)
 

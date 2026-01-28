@@ -3,6 +3,7 @@ import os
 from local_functions.saytime import saytime
 import subprocess
 from speak_and_listen.speak import speak
+from speak_and_listen.listen import take_command
 
 def open_browser(app, url):
     subprocess.Popen([app, "--new-window", url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -58,3 +59,16 @@ def handle_local_command(received):
         speak("Updating operating system")
         os.system("sudo apt update && sudo apt upgrade -y")
         return "Operating system updated successfully"
+    elif "going to sleep now" in received or "going to bed now" in received:
+        speak("Ok Good night, have a nice dream")
+        speak("Should I shutdown the operating system?")
+        confirm_command = take_command(with_response=False)
+        if "yes shutdown" in confirm_command or "shutdown now" in confirm_command or "yes" in confirm_command:
+            speak("Confirmed, shutting down the operating system")
+            speak("3")
+            speak("2")
+            speak("1")
+            speak("bye bye")
+            # os.system("poweroff")
+        else:
+            return "Ok I will not shutdown the operating system"
