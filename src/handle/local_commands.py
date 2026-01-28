@@ -2,6 +2,7 @@ import time
 import os
 from local_functions.saytime import saytime
 import subprocess
+from speak_and_listen.speak import speak
 
 def open_browser(app, url):
     subprocess.Popen([app, "--new-window", url], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -53,3 +54,7 @@ def handle_local_command(received):
         return handle_kill("brave")
     elif "kill code editor" in received:
         return handle_kill("antigravity")
+    elif "update operating system" in received or "update os" in received:
+        speak("Updating operating system")
+        os.system("sudo apt update && sudo apt upgrade -y")
+        return "Operating system updated successfully"
