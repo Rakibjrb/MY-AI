@@ -15,7 +15,7 @@ def process_command(command):
     if system_response:
         return system_response
 
-    if any(command.startswith(prefix) for prefix in ["open", "kill", "say", "switch", "play", "update"]):
+    if any(command.startswith(prefix) for prefix in ["open", "kill", "say", "switch", "play", "update", "shutdown", "shut down"]):
         return "command not found"
     
     if not local_response and not system_response:

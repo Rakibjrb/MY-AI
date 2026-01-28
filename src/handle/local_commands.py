@@ -59,16 +59,14 @@ def handle_local_command(received):
         speak("Updating operating system")
         os.system("sudo apt update && sudo apt upgrade -y")
         return "Operating system updated successfully"
-    elif "going to sleep now" in received or "going to bed now" in received:
-        speak("Ok Good night, have a nice dream")
-        speak("Should I shutdown the operating system?")
+    elif any(received.startswith(shutdown) for shutdown in ["shutdown operating system now", "shutdown the system now", "shutdown", "shutdown pc", "shutdown the pc now"]):
+        speak("Please Confirm again, Should I shutdown the operating system?")
         confirm_command = take_command(with_response=False)
-        if "yes shutdown" in confirm_command or "shutdown now" in confirm_command or "yes" in confirm_command:
+        if any(confirm_command.startswith(confirm) for confirm in ["yes", "shut down", "shutdown", "yes shutdown", "shutdown", "shutdown now", "sure", "sure shutdown", "sure shutdown now"]):
             speak("Confirmed, shutting down the operating system")
             speak("3")
             speak("2")
             speak("1")
-            speak("bye bye")
-            # os.system("poweroff")
+            os.system("poweroff")
         else:
             return "Ok I will not shutdown the operating system"
