@@ -1,6 +1,6 @@
 # --- Voice & Speech ---
 SpeechRecognition
-gTTS
+edge_tts
 pvporcupine
 pvrecorder
 langdetect

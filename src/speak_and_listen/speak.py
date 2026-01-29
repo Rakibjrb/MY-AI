@@ -1,31 +1,38 @@
+import asyncio
+import edge_tts as tts
 import os
 import subprocess
-from gtts import gTTS
-from langdetect import detect
+import langdetect
 
-def speak(text):
-    main_voice = "maya.mp3"
-    detected_lang = 'en'
+#Female voice
+ENG_VOICE = "en-US-AvaNeural"
+BN_VOICE = "bn-BD-NabanitaNeural"
 
+#Male voice
+# ENG_VOICE = "en-US-AndrewNeural" 
+# BN_VOICE = "bn-BD-PradeepNeural"
+
+detected_lang = 'en'
+
+async def generate_voice(text):
+    voice_file_name = "voice.mp3"
     try:
         try:
-            detected_lang = detect(text) # detect language
+            detected_lang = langdetect.detect(text)
         except:
-            detected_lang = 'en' # default language is english
+            detected_lang = "en"
         
-        print(f"Maya Speaking ...")
-        tts = gTTS(text=text, lang=detected_lang, slow=False)
-        tts.save(main_voice)
-
-        subprocess.run(["mpg123", "-q", main_voice])
+        voice = tts.Communicate(text, detected_lang == "en" and ENG_VOICE or BN_VOICE)
+        await voice.save(voice_file_name)
+        print(f"Maya Speaking {detected_lang}...")
+        subprocess.run(["mpg123", "-q", voice_file_name])
 
     except Exception as e:
-        print(f"Error on Voice System: {e}")
-        tts = gTTS(text="Error on Voice System", lang="en", slow=False)
-        tts.save(main_voice)
-
-        subprocess.run(["mpg123", "-q", main_voice])
+        print(f"Voice Error: {e}")
     
     finally:
-        if os.path.exists(main_voice):
-            os.remove(main_voice)
+        if os.path.exists(voice_file_name):
+            os.remove(voice_file_name)
+
+def speak(text):
+    asyncio.run(generate_voice(text))

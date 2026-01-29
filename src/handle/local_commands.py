@@ -47,13 +47,13 @@ def handle_local_command(received):
     elif "open github profile" in received or "open github" in received:
         open_browser("google-chrome", "https://github.com/rakibjrb")
         return "github profile opened"
-    elif "open code editor" in received:
+    elif "open code editor" in received or "open editor" in received or "open workspace" in received:
         return handle_apps("antigravity")
-    elif "kill chrome" in received:
+    elif "kill chrome" in received or "close chrome" in received:
         return handle_kill("chrome")
-    elif "kill brave" in received:
+    elif "kill brave" in received or "close brave" in received:
         return handle_kill("brave")
-    elif "kill code editor" in received:
+    elif "kill code editor" in received or "close code editor" in received or "close workspace" in received:
         return handle_kill("antigravity")
     elif "update operating system" in received or "update os" in received:
         speak("Updating operating system")
