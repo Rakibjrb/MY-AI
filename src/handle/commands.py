@@ -19,8 +19,19 @@ def process_command(command):
     if any(command.lower().startswith(p) for p in action_prefixes):
         return "I found the action, but I don't know how to handle this command yet."
 
-    print(f"Asking Gemini for: {command} ...")
-    return get_gemini_response(command)
+    while True:
+        print(f"Asking Gemini for: {command} ...")
+        response = get_gemini_response(command)
+        speak(response)
+        next_command = take_command(with_response=False)
+        if next_command == "none" or next_command == "":
+            speak("no more questions?")
+            return
+        if next_command:
+            command = next_command
+            continue
+
+    return "ok, ask me anything anytime you want"
 
 def commands():
     command = take_command()
