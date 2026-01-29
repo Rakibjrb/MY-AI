@@ -23,7 +23,7 @@ def take_command(with_response=True):
         try:
             print("Listening...")
             r.dynamic_energy_threshold = False
-            r.energy_threshold = 200
+            r.energy_threshold = 150
             r.adjust_for_ambient_noise(source, duration=1)
             r.pause_threshold = 1
             audio = r.listen(source, timeout=5, phrase_time_limit=7)
