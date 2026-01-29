@@ -25,6 +25,7 @@ async def generate_voice(text):
         voice = tts.Communicate(text, detected_lang == "en" and ENG_VOICE or BN_VOICE)
         await voice.save(voice_file_name)
         print(f"Maya Speaking {detected_lang}...")
+        os.system("pactl set-sink-volume @DEFAULT_SINK@ 100%")
         subprocess.run(["mpg123", "-q", voice_file_name])
 
     except Exception as e:

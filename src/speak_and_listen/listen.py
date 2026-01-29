@@ -2,6 +2,7 @@ import speech_recognition as sr
 from speak_and_listen.speak import speak
 import random
 import time
+import os
 
 listening_messages = [
     "I'm listening ...",
@@ -22,6 +23,7 @@ def take_command(with_response=True):
 
         try:
             print("Listening...")
+            os.system("pactl set-sink-volume @DEFAULT_SINK@ 20%")
             r.dynamic_energy_threshold = False
             r.energy_threshold = 150
             r.adjust_for_ambient_noise(source, duration=1)

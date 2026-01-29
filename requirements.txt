@@ -5,6 +5,7 @@ pvporcupine
 pvrecorder
 langdetect
 pyaudio
+rapidfuzz
 python-dotenv
 # playsound এর বদলে লিনাক্সে আমরা mpg123 ব্যবহার করব, 
 # তাই এটি এখানে না রাখাই ভালো। তবে উইন্ডোজের জন্য লাগলে পরে অ্যাড করা যাবে।

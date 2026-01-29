@@ -26,6 +26,7 @@ def listen_wake_word():
             if result >= 0:
                 recorder.stop()
                 print("Maya Activated!")
+                os.system("pactl set-sink-volume @DEFAULT_SINK@ 20%")
                 return True
 
     except Exception as e:
