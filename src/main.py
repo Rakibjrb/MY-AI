@@ -7,6 +7,7 @@ from handle.commands import commands
 
 def main_system():
     try:
+        subprocess.Popen(["pavucontrol"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         startup() # System startup
         while True:
             if listen_wake_word():

@@ -119,7 +119,7 @@ def handle_local_command(received):
                 for i in range(3, 0, -1):
                     speak(str(i))
                     time.sleep(0.5)
-                # os.system("poweroff")
+                os.system("poweroff")
             else:
                 return "Ok Rakibul, I will not shutdown the operating system"
     
